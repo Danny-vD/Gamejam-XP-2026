@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using EditorAttributes;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using VDFramework;
+using VDFramework.Logger;
 
 namespace XPGJ2026.MovementSystem
 {
@@ -16,6 +18,9 @@ namespace XPGJ2026.MovementSystem
 
 		[SerializeField]
 		private Rigidbody rigidbdy;
+
+		[SerializeField]
+		private float rotationStrength = 1;
 
 		private Coroutine movementCoroutine;
 
@@ -53,24 +58,57 @@ namespace XPGJ2026.MovementSystem
 			{
 				Vector2 input = movementInput.action.ReadValue<Vector2>();
 
+				float absInputY = Mathf.Abs(input.y);
+				
 				if (input.y != 0)
 				{
 					Vector3 cameraForward = playerCameraTransform.forward;
-					Vector3 forwardRotatingAxis = Vector3.Cross(Vector3.up, cameraForward).normalized;
+					Vector3 forwardRotatingAxis = playerCameraTransform.right;
 
-					rigidbdy.AddTorque(forwardRotatingAxis * input.y);
+					Vector3 closestTransformDirection = GetClosestTransformDirection(forwardRotatingAxis);
+
+					rigidbdy.AddTorque(input.y * rotationStrength * Time.deltaTime * closestTransformDirection, ForceMode.VelocityChange);
 				}
-
+				
 				if (input.x != 0)
 				{
 					Vector3 cameraRight = playerCameraTransform.right;
-					Vector3 rightRotatingAxis = Vector3.Cross(cameraRight, Vector3.down).normalized;
-					
-					rigidbdy.AddTorque(rightRotatingAxis * input.x);
+					Vector3 rightRotatingAxis = playerCameraTransform.forward;
+
+					Vector3 closestTranformDirection = GetClosestTransformDirection(rightRotatingAxis);
+
+					rigidbdy.AddTorque(-input.x * rotationStrength * Time.deltaTime * closestTranformDirection, ForceMode.VelocityChange);
 				}
 
 				yield return null;
 			}
+		}
+
+		private Vector3 GetClosestTransformDirection(Vector3 direction)
+		{
+			float dot = Vector3.Dot(direction, transform.forward);
+			float biggestDotAbs = Mathf.Abs(dot);
+
+			Vector3 closestDirection = transform.forward * Mathf.Sign(dot);
+			
+			dot = Vector3.Dot(direction, transform.right);
+			float dotAbs = Mathf.Abs(dot);
+
+			if (dotAbs > biggestDotAbs)
+			{
+				biggestDotAbs    = dotAbs;
+				closestDirection = transform.right * Mathf.Sign(dot);
+			}
+			
+			dot = Vector3.Dot(direction, transform.up);
+			dotAbs = Mathf.Abs(dot);
+
+			if (dotAbs > biggestDotAbs)
+			{
+				closestDirection = transform.up * Mathf.Sign(dot);
+			}
+
+			return closestDirection;
 		}
 	}
 }
