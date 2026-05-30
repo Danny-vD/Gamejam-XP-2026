@@ -4,11 +4,10 @@ using System.Linq;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
-using Utility;
-using Utility.UtilityPackage;
 using VDPackages.SerializableDictionaryPackage.SerializableDictionary;
+using VDPackagesEditor.UtilityPackage;
 
-namespace PropertyDrawers.SerializableDictionaryPackage
+namespace VDPackagesEditor.SerializableDictionaryPackage.PropertyDrawers
 {
 	[CustomPropertyDrawer(typeof(SerializableDictionary<,>), true)]
 	public class SerializableDictionaryDrawer : PropertyDrawer

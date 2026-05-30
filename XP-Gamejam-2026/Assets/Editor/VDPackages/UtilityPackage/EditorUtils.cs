@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using VDFramework.Extensions;
 
-namespace Utility.UtilityPackage
+namespace VDPackagesEditor.UtilityPackage
 {
 	public static class EditorUtils
 	{
@@ -301,7 +301,13 @@ namespace Utility.UtilityPackage
 			Action<int, SerializedProperty, SerializedProperty> elementAction)
 			where TEnum : struct, Enum
 		{
+			if (array.arraySize == 0)
+			{
+				return;
+			}
+			
 			DrawKeyValueArray(array, keyName, valueName, DrawFoldout);
+			return;
 
 			void DrawFoldout(int i, SerializedProperty key, SerializedProperty value)
 			{
@@ -338,6 +344,11 @@ namespace Utility.UtilityPackage
 			GUIContent valueLabel)
 			where TEnum : struct, Enum
 		{
+			if (array.arraySize == 0)
+			{
+				return;
+			}
+			
 			DrawFoldoutKeyValueArray<TEnum>(array, keyName, valueName, foldouts, DrawValue);
 
 			void DrawValue(int i, SerializedProperty key, SerializedProperty value)

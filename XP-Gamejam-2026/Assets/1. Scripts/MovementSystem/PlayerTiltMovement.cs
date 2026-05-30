@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections;
 using EditorAttributes;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using VDFramework;
-using VDFramework.Logger;
 
 namespace XPGJ2026.MovementSystem
 {

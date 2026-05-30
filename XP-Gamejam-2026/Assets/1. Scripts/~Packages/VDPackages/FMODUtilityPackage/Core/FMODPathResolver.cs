@@ -5,29 +5,21 @@ using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
 using VDFramework.Extensions;
-using VDFramework.Logger;
 using VDFramework.Utility;
 using VDPackages.FMODUtilityPackage.Enums;
 using VDPackages.FMODUtilityPackage.Structs;
-using VDPackages.FMODUtilityPackage.Utility;
-#if !UNITY_EDITOR
-using VDPackages.FMODUtilityPackage.Constants;
-#endif
 
 namespace VDPackages.FMODUtilityPackage.Core
 {
 	/// <summary>
-	/// Utility class that resolves <see cref="AudioEvent"/>s, <see cref="AudioBus"/>ses and <see cref="GlobalEmitter"/>s to FMOD events, busses and emitters 
+	/// Utility class that resolves <see cref="AudioBus"/>ses and <see cref="GlobalEmitter"/>s to FMOD busses and emitters 
 	/// </summary>
 	[Serializable]
-	public class FMODPathResolver
+	public class FMODPathResolver : ISerializationCallbackReceiver
 	{
 		public const string MASTER_BUS_PATH = "bus:/";
 
 		private static Dictionary<AudioBus, Bus> busPerAudioBusEnum = new Dictionary<AudioBus, Bus>();
-		
-		//[SerializeField]
-		//private List<EventReferencePerEvent> events = new List<EventReferencePerEvent>();
 
 		[SerializeField]
 		private List<BusPathPerBus> buses = new List<BusPathPerBus>();
@@ -65,11 +57,6 @@ namespace VDPackages.FMODUtilityPackage.Core
 				emitters.Add(emitterType, emitter);
 			}
 		}
-
-		//public EventReference GetEventReference(AudioEvent audioEvent)
-		//{
-		//	return events.First(item => item.Key.Equals(audioEvent)).Value;
-		//}
 
 		public Bus GetAudioBus(AudioBus audioBus)
 		{
@@ -129,25 +116,18 @@ namespace VDPackages.FMODUtilityPackage.Core
 		private void UpdateDictionaries()
 		{
 			//TODO replace the lists with SerializableDictionaries (check the serializableDictionary drawer how to properly display it in the inspector)
-			//EnumDictionaryUtil.PopulateEnumDictionary<EventReferencePerEvent, AudioEvent, EventReference>(events);
-
 			EnumDictionaryUtil.PopulateEnumDictionary<BusPathPerBus, AudioBus, string>(buses);
 
 			EnumDictionaryUtil.PopulateEnumDictionary<EventsPerEmitter, GlobalEmitter, EventReference>(emitterEvents);
 		}
 
-// 		public void OnBeforeSerialize()
-// 		{
-// 			UpdateDictionaries();
-//
-// #if UNITY_EDITOR
-// 			if (FMODUnity.EventManager.IsInitialized && !UnityEditor.EditorApplication.isPlaying) //EventManager is an editor script
-// #endif
-// 				SetEventPaths();
-// 		}
-//
-// 		public void OnAfterDeserialize()
-// 		{
-// 		}
+		public void OnBeforeSerialize()
+		{
+			UpdateDictionaries();
+		}
+
+		public void OnAfterDeserialize()
+		{
+		}
 	}
 }
