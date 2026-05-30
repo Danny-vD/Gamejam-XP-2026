@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using VDFramework.Singleton;
-#if UNITY_INPUT_SYSTEM
-using Mouse = UnityEngine.InputSystem.Mouse;
-#endif
 
 namespace VDPackages.UtilityPackage.CursorManagement.CursorUtility
 {
@@ -13,7 +11,6 @@ namespace VDPackages.UtilityPackage.CursorManagement.CursorUtility
 	{
 		#region Nested Types
 
-#if UNITY_INPUT_SYSTEM
 		// Necessary for convenience of other scripts trying to interact with MouseUtil
 
 		/// <summary>
@@ -52,46 +49,7 @@ namespace VDPackages.UtilityPackage.CursorManagement.CursorUtility
 			/// <seealso cref="Mouse.backButton"/>
 			Back = UnityEngine.InputSystem.LowLevel.MouseButton.Back,
 		}
-#else
-		/// <summary>
-		/// Button indices for <see cref="UnityEngine.Input.GetMouseButton"/>
-		/// </summary>
-		/// <seealso cref="UnityEngine.Input.GetMouseButtonDown"/>
-		/// <seealso cref="UnityEngine.Input.GetMouseButtonUp"/>
-		public enum MouseButton
-		{
-			/// <summary>
-			/// Left mouse button.
-			/// </summary>
-			/// <seealso cref="UnityEngine.KeyCode.Mouse0"/>
-			Left,
 
-			/// <summary>
-			/// Right mouse button.
-			/// </summary>
-			/// <seealso cref="UnityEngine.KeyCode.Mouse1"/>
-			Right,
-
-			/// <summary>
-			/// Middle mouse button.
-			/// </summary>
-			/// <seealso cref="UnityEngine.KeyCode.Mouse2"/>
-			Middle,
-
-			/// <summary>
-			/// First side button.
-			/// </summary>
-			/// <seealso cref="UnityEngine.KeyCode.Mouse3"/>
-			Back,
-
-			/// <summary>
-			/// Second side button.
-			/// </summary>
-			/// <seealso cref="UnityEngine.KeyCode.Mouse4"/>
-			Forward,
-		}
-#endif
-		
 		/// <summary>
 		/// A utility class that watches the Button ups and downs and calls the respective events
 		/// </summary>
@@ -311,7 +269,7 @@ namespace VDPackages.UtilityPackage.CursorManagement.CursorUtility
 		/// Returns true if the <see cref="MouseScrollDelta"/> has a value higher than 0
 		/// </summary>
 		public static bool IsScrolling => MouseScrollDelta.sqrMagnitude > 0.0f;
-		
+
 		private static MouseInputEventHandler[] MouseButtonHandlers
 		{
 			get
@@ -410,7 +368,7 @@ namespace VDPackages.UtilityPackage.CursorManagement.CursorUtility
 			{
 				return;
 			}
-			
+
 			MouseInputEventHandler handler = mouseButtonHandlers[(int)mouseButton];
 
 			handler.OnButtonDown -= callback;
@@ -438,7 +396,7 @@ namespace VDPackages.UtilityPackage.CursorManagement.CursorUtility
 			{
 				return;
 			}
-			
+
 			MouseInputEventHandler handler = mouseButtonHandlers[(int)mouseButton];
 
 			handler.OnButtonUp -= callback;
@@ -500,9 +458,8 @@ namespace VDPackages.UtilityPackage.CursorManagement.CursorUtility
 
 		#endregion
 
-		#region UNITY_INPUT_SYSTEM
+		#region ENABLE_INPUT_SYSTEM
 
-#if UNITY_INPUT_SYSTEM
 		protected override void Awake()
 		{
 			base.Awake();
@@ -556,58 +513,6 @@ namespace VDPackages.UtilityPackage.CursorManagement.CursorUtility
 				_ => throw new ArgumentOutOfRangeException(nameof(mouseButton), mouseButton, "Not a valid mouse button"),
 			};
 		}
-
-#endif
-
-		#endregion
-
-		#region Legacy input
-
-#if !UNITY_INPUT_SYSTEM
-		protected override void Awake()
-		{
-			base.Awake();
-
-			if (mouseButtonHandlers != null) // Since it's static it could already be initialised
-			{
-				return;
-			}
-
-			mouseButtonHandlers = new MouseInputEventHandler[5];
-			
-			/*
-			 * [0] == Left
-			 * [1] == Right
-			 * [2] == Mouse Wheel button
-			 * [3] == Mouse Back
-			 * [4] == Mouse Forward
-			 */
-			for (int i = 0; i < mouseButtonHandlers.Length; i++)
-			{
-				mouseButtonHandlers[i] = new MouseInputEventHandler(GetMouseButtonDown(i), GetMouseButtonUp(i));
-			}
-
-			if (!transform.parent)
-			{
-				DontDestroyOnLoad(true);
-			}
-		}
-
-		private static Vector2 GetMouseScroll()
-		{
-			return Input.mouseScrollDelta;
-		}
-
-		private static Func<bool> GetMouseButtonDown(int buttonNumber)
-		{
-			return () => Input.GetMouseButtonDown(buttonNumber);
-		}
-
-		private static Func<bool> GetMouseButtonUp(int buttonNumber)
-		{
-			return () => Input.GetMouseButtonUp(buttonNumber);
-		}
-#endif
 
 		#endregion
 

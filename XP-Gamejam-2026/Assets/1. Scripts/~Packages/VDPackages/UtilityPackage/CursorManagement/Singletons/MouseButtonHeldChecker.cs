@@ -13,7 +13,7 @@ namespace VDPackages.UtilityPackage.CursorManagement.Singletons
 		public static readonly Dictionary<MouseButtonUtil.MouseButton, Action> OnStartedHoldingButtonEvents = new Dictionary<MouseButtonUtil.MouseButton, Action>();
 		public static readonly Dictionary<MouseButtonUtil.MouseButton, Action> OnStoppedHoldingButtonEvents = new Dictionary<MouseButtonUtil.MouseButton, Action>();
 		
-		[SerializeField, Tooltip("How long (in seconds) a button should be held down for it to count as 'holding'")]
+		[SerializeField, Tooltip("How long (in seconds) a button should be held down, for it to count as 'holding'")]
 		private float buttonDownTimeThreshold = 0.1f;
 
 		private Dictionary<MouseButtonUtil.MouseButton, float> downTimePerButton;

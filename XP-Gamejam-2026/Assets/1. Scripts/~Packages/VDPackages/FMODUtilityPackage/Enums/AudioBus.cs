@@ -8,8 +8,5 @@ namespace VDPackages.FMODUtilityPackage.Enums
 	public enum AudioBus // Value 0 is considered the Master bus
 	{
 		Master = 0, // Master bus, do not delete!
-		Music = 1,
-		SFX = 2,
-		Ambience = 3,
 	}
 }

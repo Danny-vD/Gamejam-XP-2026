@@ -2,7 +2,7 @@
 using UnityEngine.Events;
 using VDFramework;
 
-namespace LittleChef.Grabbables.Components
+namespace XPGJ2026.Utility
 {
 	public class ImpactDetector : BetterMonoBehaviour
 	{

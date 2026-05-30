@@ -1,8 +1,8 @@
 ﻿using AYellowpaper;
-using LittleChef.Grabbables.Components;
 using UnityEngine;
 using VDFramework;
 using XPGJ2026.Audio.Interfaces;
+using XPGJ2026.Utility;
 
 namespace XPGJ2026.Audio.Physics
 {
