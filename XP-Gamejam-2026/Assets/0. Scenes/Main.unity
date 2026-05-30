@@ -664,52 +664,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1364748810
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1364748812}
-  - component: {fileID: 1364748811}
-  m_Layer: 0
-  m_Name: CursorHider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1364748811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1364748810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e85f433019ced4347aaa141e1f4bedce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: VDPackages::VDPackages.UtilityPackage.Utility.CursorUtility.CursorHider
-  mouseClickInput: {fileID: 3001919216989983466, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  hideMode: 1
---- !u!4 &1364748812
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1364748810}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.17484, y: 0.40461, z: -0.17855}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1407198343
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,6 +678,7 @@ GameObject:
   - component: {fileID: 1407198344}
   - component: {fileID: 1407198349}
   - component: {fileID: 1407198348}
+  - component: {fileID: 1407198350}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -818,7 +773,7 @@ Transform:
   m_GameObject: {fileID: 1407198343}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.092371166, y: 0.2525, z: 0.18747662}
+  m_LocalPosition: {x: 0.09237118, y: 0.2525, z: 0.1874766}
   m_LocalScale: {x: 0.17594509, y: 0.5, z: 0.35709834}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -832,15 +787,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1407198343}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0827c96c4dc473cb5f53c8378160805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::XPGJ2026.MovementSystem.PlayerTiltMovement
-  playerCameraTransform: {fileID: 330585546}
   movementInput: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  playerCameraTransform: {fileID: 330585546}
   rigidbdy: {fileID: 1407198349}
-  rotationStrength: 60
+  rotationStrength: 3
 --- !u!54 &1407198349
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -849,7 +804,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1407198343}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 50
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -867,14 +822,32 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
+--- !u!114 &1407198350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407198343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11d55f0217d242dd937d911aec1d7019, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::XPGJ2026.MovementSystem.PlayerRollingMovement
+  movementInput: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  playerCameraTransform: {fileID: 330585546}
+  rigidbdy: {fileID: 1407198349}
+  forcePointLeftWheel: {x: 0, y: -0.5, z: 0.5}
+  forcePointRightWheel: {x: 0, y: -0.5, z: -0.5}
+  rollingStrength: 5
+  forwardForceDirection: {x: 1, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 410087041}
   - {fileID: 832575519}
-  - {fileID: 1364748812}
   - {fileID: 330585546}
   - {fileID: 6627047}
   - {fileID: 1407198347}
