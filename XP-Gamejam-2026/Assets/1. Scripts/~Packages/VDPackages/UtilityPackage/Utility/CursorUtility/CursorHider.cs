@@ -1,7 +1,7 @@
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using VDFramework;
-using VDPackages.UtilityPackage.CursorManagement.CursorUtility;
 
 namespace VDPackages.UtilityPackage.Utility.CursorUtility
 {
@@ -17,6 +17,9 @@ namespace VDPackages.UtilityPackage.Utility.CursorUtility
 			HideCursorAfterClick,
 		}
 
+		[SerializeField]
+		private InputActionReference mouseClickInput;
+
 		[SerializeField, Tooltip("When should the cursor be hidden?")]
 		private CursorHideMode hideMode = CursorHideMode.HideCursor;
 
@@ -28,21 +31,21 @@ namespace VDPackages.UtilityPackage.Utility.CursorUtility
 			}
 			else // HideCursorAfterClick || HideCursor
 			{
-				MouseButtonUtil.OnAnyMouseButtonUp += HideCursor;
+				mouseClickInput.action.canceled += HideCursor;
 			}
 
 			if (hideMode == CursorHideMode.HideCursor)
 			{
-				HideCursor();
+				HideCursor(default);
 			}
 		}
 
 		private void OnDisable()
 		{
-			MouseButtonUtil.OnAnyMouseButtonUp -= HideCursor;
+			mouseClickInput.action.canceled -= HideCursor;
 		}
 
-		public static void HideCursor()
+		public static void HideCursor(InputAction.CallbackContext callbackContext)
 		{
 			Cursor.visible = false;
 		}

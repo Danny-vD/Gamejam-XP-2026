@@ -680,7 +680,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1364748811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -693,6 +693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e85f433019ced4347aaa141e1f4bedce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: VDPackages::VDPackages.UtilityPackage.Utility.CursorUtility.CursorHider
+  mouseClickInput: {fileID: 3001919216989983466, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   hideMode: 1
 --- !u!4 &1364748812
 Transform:
@@ -839,7 +840,7 @@ MonoBehaviour:
   playerCameraTransform: {fileID: 330585546}
   movementInput: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   rigidbdy: {fileID: 1407198349}
-  rotationStrength: 15
+  rotationStrength: 60
 --- !u!54 &1407198349
 Rigidbody:
   m_ObjectHideFlags: 0
