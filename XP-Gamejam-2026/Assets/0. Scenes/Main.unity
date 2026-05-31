@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 6627045}
   - component: {fileID: 6627044}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -225,7 +225,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6627043}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4.3765, y: 4.3765, z: 4.3765}
   m_ConstrainProportionsScale: 0
@@ -693,7 +693,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1407198343}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 8516b0555a15d6147909a703507912b4, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -804,9 +804,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1407198343}
   serializedVersion: 5
-  m_Mass: 50
+  m_Mass: 1
   m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_AngularDamping: 0.1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -838,10 +838,14 @@ MonoBehaviour:
   movementInput: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   playerCameraTransform: {fileID: 330585546}
   rigidbdy: {fileID: 1407198349}
-  forcePointLeftWheel: {x: 0, y: -0.5, z: 0.5}
-  forcePointRightWheel: {x: 0, y: -0.5, z: -0.5}
-  rollingStrength: 5
-  forwardForceDirection: {x: 1, y: 0, z: 0}
+  forcePointLeftWheelLocal: {x: 0, y: -0.5, z: 0.3}
+  forcePointRightWheelLocal: {x: 0, y: -0.5, z: -0.3}
+  forwardForceDirectionLocal: {x: 1, y: 0, z: 0}
+  maxStrengthModifier: 1
+  rollingAcceleration: 8
+  rotateSpeed: 12
+  maxAngularVelocityDegrees: 120
+  maxLinearVelocity: 4
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -849,5 +853,5 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 330585546}
-  - {fileID: 6627047}
   - {fileID: 1407198347}
+  - {fileID: 6627047}
