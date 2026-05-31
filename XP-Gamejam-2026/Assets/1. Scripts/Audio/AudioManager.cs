@@ -2,10 +2,11 @@ using UnityEngine;
 using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
+using VDFramework.Singleton;
 
 namespace XPGJ2026
 {
-	public class AudioManager : MonoBehaviour
+	public class AudioManager : Singleton<AudioManager>
 	{
 		[SerializeField] private EventReference musicEventRef; // Assign in Inspector
 
@@ -30,6 +31,10 @@ namespace XPGJ2026
 			musicInstance.release();
 		}
 
+		public void SetMusicArea(MusicArea area)
+		{
+			musicInstance.setParameterByName("area",(float) area);
+		}
 		void OnDestroy()
 		{
 			StopMusic();
