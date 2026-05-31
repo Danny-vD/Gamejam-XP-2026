@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using VDFramework;
 
@@ -7,6 +8,9 @@ namespace XPGJ2026.MovementSystem
 {
 	public abstract class AbstractContinuousPlayerMovement : BetterMonoBehaviour
 	{
+		public UnityEvent onMoving;
+		public UnityEvent onStopMoving;
+
 		[SerializeField]
 		protected InputActionReference movementInput;
 
@@ -27,12 +31,14 @@ namespace XPGJ2026.MovementSystem
 		private void OnStartPressingInput(InputAction.CallbackContext obj)
 		{
 			movementCoroutine ??= StartCoroutine(MovementHandlingCoroutine());
+			onMoving.Invoke();
 		}
 
 		private void OnStopPressingInput(InputAction.CallbackContext obj)
 		{
 			StopCoroutine(movementCoroutine);
 			movementCoroutine = null;
+			onStopMoving.Invoke();
 		}
 
 		private IEnumerator MovementHandlingCoroutine()

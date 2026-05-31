@@ -1,4 +1,5 @@
 ﻿using EditorAttributes;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -6,6 +7,11 @@ namespace XPGJ2026.MovementSystem
 {
 	public class PlayerRollingMovement : AbstractContinuousPlayerMovement
 	{
+
+		[field: Header("Ambience")]
+
+		[field: SerializeField] public EventReference ambience { get; private set; }
+
 		[SerializeField, HelpBox("Used to determine the direction of the input", MessageMode.None, drawAbove: true)]
 		private Transform playerCameraTransform;
 
