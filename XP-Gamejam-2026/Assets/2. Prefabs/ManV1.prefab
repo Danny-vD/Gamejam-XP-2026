@@ -165,6 +165,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 807dda71a39a4bf408abb7583abc7cef, type: 3}
       insertIndex: -1
       addedObject: {fileID: 807074066616714253}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 807dda71a39a4bf408abb7583abc7cef, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1373228198141007570}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 807dda71a39a4bf408abb7583abc7cef, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -7139614071910636278}
   m_SourcePrefab: {fileID: 100100000, guid: 807dda71a39a4bf408abb7583abc7cef, type: 3}
 --- !u!1 &7050394061490531281 stripped
 GameObject:
@@ -193,6 +199,46 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1373228198141007570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7050394061490531281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c0683cc3a2342758e24fcc9fe880127, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::XPGJ2026.NPCScripts.NPCs.NPCWanderer
+  OnDestinationReached:
+    m_PersistentCalls:
+      m_Calls: []
+  availableTargets: []
+  agent: {fileID: -7139614071910636278}
+  targetReachedDistance: 0.5
+--- !u!195 &-7139614071910636278
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7050394061490531281}
+  m_Enabled: 1
+  m_AgentTypeID: 1
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!4 &7679720004641288555 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 807dda71a39a4bf408abb7583abc7cef, type: 3}
