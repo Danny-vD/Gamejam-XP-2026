@@ -10486,7 +10486,6 @@ MonoBehaviour:
   npcPrefabs:
   - {fileID: 6925209757283555932, guid: 7f40e75d5fb8df840b0329d5fa3f54a3, type: 3}
   - {fileID: 7050394061490531281, guid: f5622ca6865f94848bc12a2a34d78be3, type: 3}
-  - {fileID: 1563601481539161359, guid: 0b1f4586c733e5446a0539a979e247ee, type: 3}
   - {fileID: 4926055259327358256, guid: 1e84f8008f7981842b7392b8a392e598, type: 3}
   - {fileID: 7050394061490531281, guid: f5622ca6865f94848bc12a2a34d78be3, type: 3}
   possiblePoints:
@@ -10512,7 +10511,7 @@ Transform:
   m_GameObject: {fileID: 717421342}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -60}
+  m_LocalPosition: {x: 0, y: -1, z: -60}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11229,7 +11228,6 @@ MonoBehaviour:
   npcPrefabs:
   - {fileID: 6925209757283555932, guid: 7f40e75d5fb8df840b0329d5fa3f54a3, type: 3}
   - {fileID: 7050394061490531281, guid: f5622ca6865f94848bc12a2a34d78be3, type: 3}
-  - {fileID: 1563601481539161359, guid: 0b1f4586c733e5446a0539a979e247ee, type: 3}
   - {fileID: 4926055259327358256, guid: 1e84f8008f7981842b7392b8a392e598, type: 3}
   - {fileID: 7050394061490531281, guid: f5622ca6865f94848bc12a2a34d78be3, type: 3}
   possiblePoints:
@@ -11255,7 +11253,7 @@ Transform:
   m_GameObject: {fileID: 778504225}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -30}
+  m_LocalPosition: {x: 0, y: -1, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12343,7 +12341,7 @@ Transform:
   m_GameObject: {fileID: 862869999}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -28.38, y: -16.66, z: -28.77}
+  m_LocalPosition: {x: -28.38, y: -18, z: -28.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12364,7 +12362,6 @@ MonoBehaviour:
   npcPrefabs:
   - {fileID: 6925209757283555932, guid: 7f40e75d5fb8df840b0329d5fa3f54a3, type: 3}
   - {fileID: 7050394061490531281, guid: f5622ca6865f94848bc12a2a34d78be3, type: 3}
-  - {fileID: 1563601481539161359, guid: 0b1f4586c733e5446a0539a979e247ee, type: 3}
   - {fileID: 4926055259327358256, guid: 1e84f8008f7981842b7392b8a392e598, type: 3}
   - {fileID: 7050394061490531281, guid: f5622ca6865f94848bc12a2a34d78be3, type: 3}
   possiblePoints:
@@ -13075,7 +13072,7 @@ GameObject:
   - component: {fileID: 939897467}
   - component: {fileID: 939897468}
   m_Layer: 0
-  m_Name: GameObject (36)
+  m_Name: SPAWNERS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18046,7 +18043,7 @@ Transform:
   m_GameObject: {fileID: 1245588823}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -29.29, y: -16.66, z: -44.78}
+  m_LocalPosition: {x: -29.29, y: -18, z: -44.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18067,7 +18064,6 @@ MonoBehaviour:
   npcPrefabs:
   - {fileID: 6925209757283555932, guid: 7f40e75d5fb8df840b0329d5fa3f54a3, type: 3}
   - {fileID: 7050394061490531281, guid: f5622ca6865f94848bc12a2a34d78be3, type: 3}
-  - {fileID: 1563601481539161359, guid: 0b1f4586c733e5446a0539a979e247ee, type: 3}
   - {fileID: 4926055259327358256, guid: 1e84f8008f7981842b7392b8a392e598, type: 3}
   - {fileID: 7050394061490531281, guid: f5622ca6865f94848bc12a2a34d78be3, type: 3}
   possiblePoints:
@@ -22361,7 +22357,7 @@ Transform:
   m_GameObject: {fileID: 1619289685}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -24.12, y: -16.66, z: -78}
+  m_LocalPosition: {x: -24.12, y: -18, z: -78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22382,7 +22378,6 @@ MonoBehaviour:
   npcPrefabs:
   - {fileID: 6925209757283555932, guid: 7f40e75d5fb8df840b0329d5fa3f54a3, type: 3}
   - {fileID: 7050394061490531281, guid: f5622ca6865f94848bc12a2a34d78be3, type: 3}
-  - {fileID: 1563601481539161359, guid: 0b1f4586c733e5446a0539a979e247ee, type: 3}
   - {fileID: 4926055259327358256, guid: 1e84f8008f7981842b7392b8a392e598, type: 3}
   - {fileID: 7050394061490531281, guid: f5622ca6865f94848bc12a2a34d78be3, type: 3}
   possiblePoints:
@@ -24972,7 +24967,6 @@ MonoBehaviour:
   npcPrefabs:
   - {fileID: 6925209757283555932, guid: 7f40e75d5fb8df840b0329d5fa3f54a3, type: 3}
   - {fileID: 7050394061490531281, guid: f5622ca6865f94848bc12a2a34d78be3, type: 3}
-  - {fileID: 1563601481539161359, guid: 0b1f4586c733e5446a0539a979e247ee, type: 3}
   - {fileID: 4926055259327358256, guid: 1e84f8008f7981842b7392b8a392e598, type: 3}
   - {fileID: 7050394061490531281, guid: f5622ca6865f94848bc12a2a34d78be3, type: 3}
   possiblePoints:
@@ -24998,7 +24992,7 @@ Transform:
   m_GameObject: {fileID: 1795321150}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -27532,7 +27526,7 @@ Transform:
   m_GameObject: {fileID: 1971818077}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.65, y: -16.66, z: -78}
+  m_LocalPosition: {x: -3.65, y: -18, z: -78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -27553,7 +27547,6 @@ MonoBehaviour:
   npcPrefabs:
   - {fileID: 6925209757283555932, guid: 7f40e75d5fb8df840b0329d5fa3f54a3, type: 3}
   - {fileID: 7050394061490531281, guid: f5622ca6865f94848bc12a2a34d78be3, type: 3}
-  - {fileID: 1563601481539161359, guid: 0b1f4586c733e5446a0539a979e247ee, type: 3}
   - {fileID: 4926055259327358256, guid: 1e84f8008f7981842b7392b8a392e598, type: 3}
   - {fileID: 7050394061490531281, guid: f5622ca6865f94848bc12a2a34d78be3, type: 3}
   possiblePoints:
