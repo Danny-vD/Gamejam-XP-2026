@@ -1,11 +1,13 @@
 ﻿using System;
 using EditorAttributes;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace XPGJ2026.MovementSystem
 {
 	public class PlayerTiltMovement : AbstractContinuousPlayerMovement
 	{
+
 		[SerializeField, HelpBox("Used to determine the direction of the input", MessageMode.None, drawAbove: true)]
 		private Transform playerCameraTransform;
 

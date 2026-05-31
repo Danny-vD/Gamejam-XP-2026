@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using EditorAttributes;
+using UnityEngine;
 using UnityEngine.Events;
 using VDFramework;
 
@@ -7,10 +8,20 @@ namespace XPGJ2026.Utility
 	public class ImpactDetector : BetterMonoBehaviour
 	{
 		public UnityEvent OnImpact;
-		
-		private void OnCollisionEnter2D(Collision2D _)
+
+		[SerializeField, TagDropdown]
+		private string[] tags;
+
+		private void OnCollisionEnter(Collision collision)
 		{
-			OnImpact.Invoke();
+			for (int i = 0; i < tags.Length; i++)
+			{
+				if (collision.gameObject.CompareTag(tags[i]))
+				{
+					OnImpact.Invoke();
+					return;
+				}
+			}
 		}
 	}
 }
