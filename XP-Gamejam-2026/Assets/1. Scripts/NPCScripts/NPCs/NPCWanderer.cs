@@ -42,7 +42,7 @@ namespace XPGJ2026.NPCScripts.NPCs
 
 		private void Update()
 		{
-			if (agent.isActiveAndEnabled && agent.remainingDistance <= targetReachedDistance)
+			if (agent.isActiveAndEnabled && agent.isOnNavMesh && agent.remainingDistance <= targetReachedDistance)
 			{
 				OnDestinationReached.Invoke();
 				GoToNextTarget();
