@@ -8,14 +8,14 @@ namespace XPGJ2026
         [Header("Area")]
         [SerializeField] private MusicArea area;
 
-		private void OnTriggerEnter (Collider collider)
+		private void OnTriggerEnter(Collider collider)
 		{
 			if (collider.tag.Equals("Player"))
 			{
+
+				Debug.Log("Change");
 				AudioManager.Instance.SetMusicArea(area);
 			}
 		}
-
-
 	}
 }

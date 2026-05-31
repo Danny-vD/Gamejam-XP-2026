@@ -33,7 +33,7 @@ namespace XPGJ2026
 
 		public void SetMusicArea(MusicArea area)
 		{
-			musicInstance.setParameterByName("area",(float) area);
+			musicInstance.setParameterByName("areas",(float)area);
 		}
 		void OnDestroy()
 		{

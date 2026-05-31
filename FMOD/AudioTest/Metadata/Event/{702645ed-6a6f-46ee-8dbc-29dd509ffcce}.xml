@@ -65,6 +65,10 @@
 		<relationship name="modules">
 			<destination>{d50ad422-5a51-4f66-a2d1-55f4e6f15ec4}</destination>
 			<destination>{70569724-8ac1-4046-bae8-baf0c951d150}</destination>
+			<destination>{6bde8ac6-2ef6-4c62-8976-4cb5357e795d}</destination>
+			<destination>{dfeb007f-2357-45bd-8e47-9941de50cede}</destination>
+			<destination>{e74cfe0a-f098-4b37-87d4-24499299559c}</destination>
+			<destination>{5290a614-8467-4178-8c56-898360b0cc8a}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{7f6ab60d-1a69-4072-bb96-15f7f4323e27}</destination>
@@ -79,6 +83,10 @@
 		<relationship name="modules">
 			<destination>{d50ad422-5a51-4f66-a2d1-55f4e6f15ec4}</destination>
 			<destination>{70569724-8ac1-4046-bae8-baf0c951d150}</destination>
+			<destination>{6bde8ac6-2ef6-4c62-8976-4cb5357e795d}</destination>
+			<destination>{dfeb007f-2357-45bd-8e47-9941de50cede}</destination>
+			<destination>{e74cfe0a-f098-4b37-87d4-24499299559c}</destination>
+			<destination>{5290a614-8467-4178-8c56-898360b0cc8a}</destination>
 		</relationship>
 		<relationship name="preset">
 			<destination>{fad63bbf-808f-405b-836d-c3a2f0466c7d}</destination>
@@ -120,6 +128,50 @@
 			<destination>{42631fda-1fe1-4d83-9cd1-aa89febf48da}</destination>
 		</relationship>
 	</object>
+	<object class="EventSound" id="{6bde8ac6-2ef6-4c62-8976-4cb5357e795d}">
+		<property name="start">
+			<value>2</value>
+		</property>
+		<relationship name="modulators">
+			<destination>{0cebd1ee-6c23-48c7-a69d-7c4bc6edb7aa}</destination>
+		</relationship>
+		<relationship name="event">
+			<destination>{4b968520-2942-453b-b903-ebff9ec56734}</destination>
+		</relationship>
+	</object>
+	<object class="EventSound" id="{dfeb007f-2357-45bd-8e47-9941de50cede}">
+		<property name="start">
+			<value>3</value>
+		</property>
+		<relationship name="modulators">
+			<destination>{8d8de37d-40e8-4434-96f2-6900628a401b}</destination>
+		</relationship>
+		<relationship name="event">
+			<destination>{29a53bcf-6844-4d83-bc9f-bc05581a541f}</destination>
+		</relationship>
+	</object>
+	<object class="EventSound" id="{e74cfe0a-f098-4b37-87d4-24499299559c}">
+		<property name="start">
+			<value>4</value>
+		</property>
+		<relationship name="modulators">
+			<destination>{4e1f5319-2cfd-4bea-a289-3f1dda48a1e0}</destination>
+		</relationship>
+		<relationship name="event">
+			<destination>{1829cec5-5951-4a40-9184-7fb95d5a3473}</destination>
+		</relationship>
+	</object>
+	<object class="EventSound" id="{5290a614-8467-4178-8c56-898360b0cc8a}">
+		<property name="start">
+			<value>5</value>
+		</property>
+		<relationship name="modulators">
+			<destination>{aec06eea-1061-474a-b3a2-60d8e5725877}</destination>
+		</relationship>
+		<relationship name="event">
+			<destination>{6e2f6aa3-7886-4945-8f8b-60a16d4a20b5}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerGroup" id="{7f6ab60d-1a69-4072-bb96-15f7f4323e27}">
 		<property name="volume">
 			<value>-13.5</value>
@@ -149,10 +201,19 @@
 			<value>volume</value>
 		</property>
 		<property name="initialValue">
-			<value>-80</value>
+			<value>-25.015871</value>
+		</property>
+		<property name="attackShape">
+			<value>-0.403587967</value>
+		</property>
+		<property name="releaseTime">
+			<value>60000</value>
+		</property>
+		<property name="releaseShape">
+			<value>-0.0158339627</value>
 		</property>
 		<property name="finalValue">
-			<value>-80</value>
+			<value>-0.399997711</value>
 		</property>
 	</object>
 	<object class="ADSRModulator" id="{aaad3f5e-27d9-4eab-9f3a-f9d40986e5d6}">
@@ -160,10 +221,87 @@
 			<value>volume</value>
 		</property>
 		<property name="initialValue">
-			<value>-80</value>
+			<value>10</value>
+		</property>
+		<property name="attackShape">
+			<value>-1.00000048</value>
+		</property>
+		<property name="releaseTime">
+			<value>60000</value>
 		</property>
 		<property name="finalValue">
-			<value>-80</value>
+			<value>0.755554199</value>
+		</property>
+	</object>
+	<object class="ADSRModulator" id="{0cebd1ee-6c23-48c7-a69d-7c4bc6edb7aa}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>volume</value>
+		</property>
+		<property name="initialValue">
+			<value>-18.3111115</value>
+		</property>
+		<property name="attackShape">
+			<value>-1.00000048</value>
+		</property>
+		<property name="releaseTime">
+			<value>60000</value>
+		</property>
+		<property name="finalValue">
+			<value>0.755554199</value>
+		</property>
+	</object>
+	<object class="ADSRModulator" id="{8d8de37d-40e8-4434-96f2-6900628a401b}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>volume</value>
+		</property>
+		<property name="initialValue">
+			<value>-17.7333336</value>
+		</property>
+		<property name="attackShape">
+			<value>-0.728825033</value>
+		</property>
+		<property name="releaseTime">
+			<value>60000</value>
+		</property>
+		<property name="finalValue">
+			<value>0.177776337</value>
+		</property>
+	</object>
+	<object class="ADSRModulator" id="{4e1f5319-2cfd-4bea-a289-3f1dda48a1e0}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>volume</value>
+		</property>
+		<property name="initialValue">
+			<value>-17.7333336</value>
+		</property>
+		<property name="attackTime">
+			<value>700</value>
+		</property>
+		<property name="attackShape">
+			<value>-0.728825033</value>
+		</property>
+		<property name="releaseTime">
+			<value>240</value>
+		</property>
+		<property name="finalValue">
+			<value>0.177776337</value>
+		</property>
+	</object>
+	<object class="ADSRModulator" id="{aec06eea-1061-474a-b3a2-60d8e5725877}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>volume</value>
+		</property>
+		<property name="initialValue">
+			<value>-17.7333336</value>
+		</property>
+		<property name="attackShape">
+			<value>-0.728825033</value>
+		</property>
+		<property name="releaseTime">
+			<value>60000</value>
+		</property>
+		<property name="finalValue">
+			<value>0.177776337</value>
 		</property>
 	</object>
 	<object class="MixerBusEffectChain" id="{43a63a5b-d9a1-4cdb-9bf5-55131852ba71}">
