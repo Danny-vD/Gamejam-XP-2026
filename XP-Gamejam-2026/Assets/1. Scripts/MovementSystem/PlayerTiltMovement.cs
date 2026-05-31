@@ -15,6 +15,8 @@ namespace XPGJ2026.MovementSystem
 		[SerializeField]
 		private float rotationStrength = 1;
 
+		private readonly YieldInstruction yieldInstruction = new WaitForFixedUpdate();
+
 		private void Reset()
 		{
 			playerCameraTransform = FindAnyObjectByType<Camera>().transform;
@@ -38,7 +40,7 @@ namespace XPGJ2026.MovementSystem
 
 				Vector3 closestTransformDirection = GetClosestDirection(forwardRotatingAxis, allowedRotatingAxii);
 
-				rigidbdy.AddTorque(input.y * rotationStrength * Time.deltaTime * closestTransformDirection, ForceMode.VelocityChange);
+				rigidbdy.AddTorque(input.y * rotationStrength * closestTransformDirection, ForceMode.VelocityChange);
 			}
 
 			if (input.x != 0 && absInputX > absInputY)
@@ -48,8 +50,13 @@ namespace XPGJ2026.MovementSystem
 
 				Vector3 closestTranformDirection = GetClosestDirection(rightRotatingAxis, allowedRotatingAxii);
 
-				rigidbdy.AddTorque(-input.x * rotationStrength * Time.deltaTime * closestTranformDirection, ForceMode.VelocityChange);
+				rigidbdy.AddTorque(-input.x * rotationStrength * closestTranformDirection, ForceMode.VelocityChange);
 			}
+		}
+
+		protected override YieldInstruction GetYieldInstruction()
+		{
+			return yieldInstruction;
 		}
 
 		/// <summary>

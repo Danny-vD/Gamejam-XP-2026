@@ -1,5 +1,6 @@
 ﻿using EditorAttributes;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace XPGJ2026.MovementSystem
 {
@@ -7,23 +8,48 @@ namespace XPGJ2026.MovementSystem
 	{
 		[SerializeField, HelpBox("Used to determine the direction of the input", MessageMode.None, drawAbove: true)]
 		private Transform playerCameraTransform;
-		
+
 		[SerializeField]
 		private Rigidbody rigidbdy;
 
+		[FormerlySerializedAs("forcePointLeftWheel")]
 		[Space]
 		[SerializeField, DrawHandle(handleSpace: Space.Self)]
-		private Vector3 forcePointLeftWheel;
-		
+		private Vector3 forcePointLeftWheelLocal;
+
+		[FormerlySerializedAs("forcePointRightWheel")]
 		[SerializeField, DrawHandle(handleSpace: Space.Self)]
-		private Vector3 forcePointRightWheel;
+		private Vector3 forcePointRightWheelLocal;
 
 		[SerializeField]
-		private float rollingStrength = 1;
+		private Vector3 forwardForceDirectionLocal = Vector3.right;
 
 		[SerializeField]
-		private Vector3 forwardForceDirection = Vector3.right;
+		private float maxStrengthModifier = 2;
 		
+		[Header("Speed")]
+		[SerializeField]
+		private float rollingAcceleration = 3;
+		
+		[SerializeField]
+		private float rotateSpeed = 3;
+
+		[Header("Max Velocity")]
+		[SerializeField, Tooltip("The maximum angular velocity in degrees per second")]
+		private float maxAngularVelocityDegrees = 45;
+		
+		[SerializeField, Tooltip("The maximum linear velocity in metres per second")]
+		private float maxLinearVelocity = 2;
+
+		private readonly YieldInstruction yieldInstruction = new WaitForFixedUpdate();
+
+		[Button("Set max velocity")]
+		private void SetMaxVelocity()
+		{
+			rigidbdy.maxAngularVelocity = maxAngularVelocityDegrees * Mathf.Deg2Rad;
+			rigidbdy.maxLinearVelocity  = maxLinearVelocity;
+		}
+
 		private void Reset()
 		{
 			playerCameraTransform = FindAnyObjectByType<Camera>().transform;
@@ -33,27 +59,54 @@ namespace XPGJ2026.MovementSystem
 
 		private void Awake()
 		{
-			forwardForceDirection.Normalize();
+			forwardForceDirectionLocal.Normalize();
+
+			rigidbdy.maxAngularVelocity = maxAngularVelocityDegrees * Mathf.Deg2Rad;
+			rigidbdy.maxLinearVelocity  = maxLinearVelocity;
 		}
 
 		protected override void HandleInput()
 		{
 			Vector2 input = movementInput.action.ReadValue<Vector2>();
 
-			float dot = Vector3.Dot(playerCameraTransform.forward, forwardForceDirection);
+			if (input.y == 0)
+			{
+				return;
+			}
 
-			Vector3 forceDirection = transform.InverseTransformDirection(forwardForceDirection);
+			Vector3 forceDirectionWorld = transform.TransformDirection(forwardForceDirectionLocal);
+			
+			float dot = Vector3.Dot(playerCameraTransform.forward, forceDirectionWorld);
 
 			if (dot < 0)
 			{
-				forceDirection *= -1;
+				forceDirectionWorld *= -1;
 			}
 
-			Vector3 forceLeft = input.y * rollingStrength * forceDirection;
-			Vector3 forceRight = input.y * rollingStrength * forceDirection;
+			float directionalWeaknessModifierLeft = Mathf.InverseLerp(-1, 0, input.x);
+			float directionalWeaknessModifierRight = Mathf.InverseLerp(1, 0, input.x);
 			
-			rigidbdy.AddForceAtPosition(forceLeft, forcePointLeftWheel);
-			rigidbdy.AddForceAtPosition(forceRight, forcePointRightWheel);
+			float directionalStrengthModifierLeft = Mathf.Lerp(1, maxStrengthModifier, 1 - directionalWeaknessModifierRight);
+			float directionalStrengthModifierRight = Mathf.Lerp(1, maxStrengthModifier, 1 - directionalWeaknessModifierLeft);
+			
+			Vector3 forceLeftWorld = input.y * rollingAcceleration * directionalWeaknessModifierLeft * directionalStrengthModifierLeft * forceDirectionWorld;
+			Vector3 forceRightWorld = input.y * rollingAcceleration * directionalWeaknessModifierRight * directionalStrengthModifierRight * forceDirectionWorld;
+
+			Vector3 leftWheelPositionWorld = transform.TransformPoint(forcePointLeftWheelLocal);
+			Vector3 rightWheelPositionWorld = transform.TransformPoint(forcePointRightWheelLocal);
+
+			rigidbdy.AddForceAtPosition(forceLeftWorld, leftWheelPositionWorld, ForceMode.Acceleration);
+			rigidbdy.AddForceAtPosition(forceRightWorld, rightWheelPositionWorld, ForceMode.Acceleration);
+
+			if (input.x != 0)
+			{
+				rigidbdy.AddTorque(input.x * rotateSpeed * transform.up, ForceMode.Impulse);
+			}
+		}
+
+		protected override YieldInstruction GetYieldInstruction()
+		{
+			return yieldInstruction;
 		}
 	}
 }

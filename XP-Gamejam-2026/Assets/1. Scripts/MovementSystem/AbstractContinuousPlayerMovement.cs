@@ -41,11 +41,13 @@ namespace XPGJ2026.MovementSystem
 			{
 				HandleInput();
 
-				yield return null;
+				yield return GetYieldInstruction();
 			}
 		}
 
 		protected abstract void HandleInput();
+
+		protected abstract YieldInstruction GetYieldInstruction();
 		
 		protected static Vector3 GetClosestDirection(Vector3 target, Vector3[] directions)
 		{
