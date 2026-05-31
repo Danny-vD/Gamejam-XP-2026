@@ -5,7 +5,7 @@ using VDFramework.Logger;
 using VDFramework.Logger.Enums;
 using VDFramework.Logger.Implementations;
 
-namespace XPGJ2026
+namespace VDPackages.UtilityPackage
 {
 	/// <summary>
 	/// Simple class to set the <see cref="LogManager.LoggerImplementation"/> in the <see cref="LogManager"/><br/>
