@@ -22,7 +22,7 @@ namespace XPGJ2026.NPCScripts.Spawners
 
 		public void Spawn()
 		{
-			GameObject instance = Instantiate(npcPrefabs.GetRandomElement(UnityRandom.StaticInstance, out previousSpawnedIndex, previousSpawnedIndex));
+			GameObject instance = Instantiate(npcPrefabs.GetRandomElement(UnityRandom.StaticInstance, out previousSpawnedIndex, previousSpawnedIndex), transform);
 
 			NPCWanderer npcWanderer = instance.GetComponent<NPCWanderer>();
 			

@@ -3,6 +3,7 @@ using UnityEngine.AI;
 using UnityEngine.Events;
 using VDFramework;
 using VDFramework.Extensions;
+using VDFramework.Logger;
 using VDFramework.RandomWrapper;
 
 namespace XPGJ2026.NPCScripts.NPCs
@@ -42,7 +43,7 @@ namespace XPGJ2026.NPCScripts.NPCs
 
 		private void Update()
 		{
-			if (agent.remainingDistance <= targetReachedDistance)
+			if (agent.isActiveAndEnabled && agent.isOnNavMesh && agent.remainingDistance <= targetReachedDistance)
 			{
 				OnDestinationReached.Invoke();
 				GoToNextTarget();
@@ -51,6 +52,12 @@ namespace XPGJ2026.NPCScripts.NPCs
 
 		private void GoToNextTarget()
 		{
+			if (agent.isOnNavMesh)
+			{
+				LogManager.LogError($"Agent {gameObject.name} is not on the navmesh!", this);
+				return;
+			}
+			
 			Transform randomElement = availableTargets.GetRandomElement(UnityRandom.StaticInstance, out currentTargetIndex, currentTargetIndex);
 
 			agent.SetDestination(randomElement.position);
