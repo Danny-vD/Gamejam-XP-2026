@@ -15,14 +15,14 @@ namespace XPGJ2026.MovementSystem
 		protected InputActionReference movementInput;
 
 		private Coroutine movementCoroutine;
-		
-		private void OnEnable()
+
+		protected virtual void OnEnable()
 		{
 			movementInput.action.performed += OnStartPressingInput;
 			movementInput.action.canceled  += OnStopPressingInput;
 		}
 
-		private void OnDisable()
+		protected virtual void OnDisable()
 		{
 			movementInput.action.performed -= OnStartPressingInput;
 			movementInput.action.canceled  -= OnStopPressingInput;
@@ -36,7 +36,11 @@ namespace XPGJ2026.MovementSystem
 
 		private void OnStopPressingInput(InputAction.CallbackContext obj)
 		{
-			StopCoroutine(movementCoroutine);
+			if (movementCoroutine != null)
+			{
+				StopCoroutine(movementCoroutine);
+			}
+
 			movementCoroutine = null;
 			onStopMoving.Invoke();
 		}
@@ -54,7 +58,7 @@ namespace XPGJ2026.MovementSystem
 		protected abstract void HandleInput();
 
 		protected abstract YieldInstruction GetYieldInstruction();
-		
+
 		protected static Vector3 GetClosestDirection(Vector3 target, Vector3[] directions)
 		{
 			float biggestAbsDot = 0;

@@ -1,13 +1,11 @@
 ﻿using System;
 using EditorAttributes;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace XPGJ2026.MovementSystem
 {
 	public class PlayerTiltMovement : AbstractContinuousPlayerMovement
 	{
-
 		[SerializeField, HelpBox("Used to determine the direction of the input", MessageMode.None, drawAbove: true)]
 		private Transform playerCameraTransform;
 
@@ -24,6 +22,14 @@ namespace XPGJ2026.MovementSystem
 			playerCameraTransform = FindAnyObjectByType<Camera>().transform;
 
 			rigidbdy = GetComponent<Rigidbody>();
+		}
+
+		protected override void OnEnable()
+		{
+			base.OnEnable();
+
+			rigidbdy.maxLinearVelocity  = float.PositiveInfinity;
+			rigidbdy.maxAngularVelocity = 7;
 		}
 
 		protected override void HandleInput()

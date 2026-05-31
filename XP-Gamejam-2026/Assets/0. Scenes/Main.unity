@@ -789,8 +789,10 @@ GameObject:
   - component: {fileID: 1407198345}
   - component: {fileID: 1407198344}
   - component: {fileID: 1407198349}
+  - component: {fileID: 1407198355}
   - component: {fileID: 1407198348}
   - component: {fileID: 1407198350}
+  - component: {fileID: 1407198356}
   - component: {fileID: 1407198351}
   - component: {fileID: 1407198352}
   - component: {fileID: 1407198353}
@@ -888,14 +890,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1407198343}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.70710707, w: 0.7071066}
   m_LocalPosition: {x: 3.62, y: 0.2525, z: 15.01}
   m_LocalScale: {x: 0.17594509, y: 0.5, z: 0.35709834}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 208328903}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!114 &1407198348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -952,51 +954,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1407198343}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 11d55f0217d242dd937d911aec1d7019, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::XPGJ2026.MovementSystem.PlayerRollingMovement
   onMoving:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1407198353}
-        m_TargetAssemblyTypeName: XPGJ2026.Audio.EventInstancePlayers.AudioEventInstancePlayer,
-          Assembly-CSharp
-        m_MethodName: PlayIfNotPlaying
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onStopMoving:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1407198352}
-        m_TargetAssemblyTypeName: XPGJ2026.Audio.EventInstancePlayers.AudioEventInstancePlayerOneShot,
-          Assembly-CSharp
-        m_MethodName: Stop
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   movementInput: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  <ambience>k__BackingField:
-    Guid:
-      Data1: -173528636
-      Data2: 1151676561
-      Data3: 1018554016
-      Data4: -2090891779
-    Path: event:/music
   playerCameraTransform: {fileID: 330585546}
   rigidbdy: {fileID: 1407198349}
   forcePointLeftWheelLocal: {x: 0, y: -0.5, z: 0.3}
@@ -1035,8 +1004,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  tags:
-  - PlayerCollision
+  tags: []
 --- !u!114 &1407198352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1091,6 +1059,43 @@ MonoBehaviour:
     _underlyingValue: {fileID: 1407198353}
   audioPlayerShoot:
     _underlyingValue: {fileID: 1407198352}
+--- !u!114 &1407198355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407198343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a260d2d0c8ea46fbaf2dad6ac4f362df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::XPGJ2026.MovementSystem.PlayerMovementManager
+  OnStartTiltMovement:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStartWheelsMovement:
+    m_PersistentCalls:
+      m_Calls: []
+  tiltMovement: {fileID: 1407198348}
+  wheelsMovement: {fileID: 1407198350}
+  angleThreshold: 5
+--- !u!114 &1407198356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407198343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4aee06da4fd45d1982cbdf3ad0f4b39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::XPGJ2026.MovementSystem.Physics.SetPhysicsMaterialBasedOnMovementType
+  playerMovementManager: {fileID: 1407198355}
+  collidr: {fileID: 1407198344}
+  tiltMovementMaterial: {fileID: 0}
+  wheelsMovementMaterial: {fileID: 13400000, guid: 8516b0555a15d6147909a703507912b4, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

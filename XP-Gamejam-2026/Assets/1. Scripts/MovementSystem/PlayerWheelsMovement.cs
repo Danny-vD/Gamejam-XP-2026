@@ -1,17 +1,11 @@
 ﻿using EditorAttributes;
-using FMODUnity;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace XPGJ2026.MovementSystem
 {
-	public class PlayerRollingMovement : AbstractContinuousPlayerMovement
+	public class PlayerWheelsMovement : AbstractContinuousPlayerMovement
 	{
-
-		[field: Header("Ambience")]
-
-		[field: SerializeField] public EventReference ambience { get; private set; }
-
 		[SerializeField, HelpBox("Used to determine the direction of the input", MessageMode.None, drawAbove: true)]
 		private Transform playerCameraTransform;
 
@@ -66,7 +60,12 @@ namespace XPGJ2026.MovementSystem
 		private void Awake()
 		{
 			forwardForceDirectionLocal.Normalize();
+		}
 
+		protected override void OnEnable()
+		{
+			base.OnEnable();
+			
 			rigidbdy.maxAngularVelocity = maxAngularVelocityDegrees * Mathf.Deg2Rad;
 			rigidbdy.maxLinearVelocity  = maxLinearVelocity;
 		}
@@ -106,7 +105,9 @@ namespace XPGJ2026.MovementSystem
 
 			if (input.x != 0)
 			{
-				rigidbdy.AddTorque(input.x * rotateSpeed * transform.up, ForceMode.Impulse);
+				Vector3 torque = input.x * rotateSpeed * transform.up;
+				
+				rigidbdy.AddTorque(torque, ForceMode.Impulse);
 			}
 		}
 
