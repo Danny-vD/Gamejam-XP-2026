@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{9d6e409a-99d1-43a7-a226-41be95b07109}">
+		<property name="assetPath">
+			<value>dragging.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>24</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>10.488</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{ea1c959c-3e73-42dd-8c8d-2cb1fd842561}</destination>
+		</relationship>
+	</object>
+</objects>
